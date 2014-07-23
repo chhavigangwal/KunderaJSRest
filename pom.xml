@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.impetus.kundera.webtest</groupId>
+  <artifactId>KunderaJSRest</artifactId>
+  <packaging>war</packaging>
+  <version>2.14-SNAPSHOT</version>
+  <name>KunderaJSRest Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+ <dependencies>
+ 	<dependency>
+			<groupId>com.impetus.kundera.client</groupId>
+			<artifactId>kundera-rest</artifactId>
+			<version>${project.version}</version>
+
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.impetus.kundera.client</groupId>
+			<artifactId>kundera-cassandra</artifactId>
+			<version>${project.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.ws.rs</groupId>
+					<artifactId>javax.ws.rs-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax</groupId>
+					<artifactId>javaee-web-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.glassfish</groupId>
+					<artifactId>javax.faces</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jws</groupId>
+					<artifactId>jsr181-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.xml.ws</groupId>
+					<artifactId>jaxws-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.impetus.kundera.client</groupId>
+			<artifactId>kundera-cassandra</artifactId>
+			<version>${project.version}</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.impetus.kundera.client</groupId>
+			<artifactId>kundera-mongo</artifactId>
+			<version>${project.version}</version>
+
+		</dependency>
+		<dependency>
+			<groupId>com.impetus.kundera.client</groupId>
+			<artifactId>kundera-redis</artifactId>
+			<version>${project.version}</version>
+
+		</dependency>
+		<dependency>
+			<groupId>com.impetus.kundera.client</groupId>
+			<artifactId>kundera-rdbms</artifactId>
+			<version>${project.version}</version>
+
+		</dependency>
+		<dependency>
+	<groupId>com.thetransactioncompany</groupId>
+	<artifactId>cors-filter</artifactId>
+	<version>1.8</version>
+</dependency>
+	</dependencies>
+	<!-- Assembly build -->
+	<build>
+	<finalName>KunderaJSRest</finalName>
+		<plugins>
+			<plugin>
+				<!-- NOTE: We don't need a groupId specification because the group is 
+					org.apache.maven.plugins ...which is assumed by default. -->
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2.1</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> 
+				<configuration> The destination file for the code coverage report has to 
+				be set to the same value in the parent pom and in each module pom. Then JaCoCo 
+				will add up information in the same report, so that, it will give the cross-module 
+				code coverage. <destFile>${project.basedir}/../target/jacoco-it.exec</destFile> 
+				</configuration> <executions> <execution> <id>post-test</id> <configuration> 
+				<skip>true</skip> </configuration> </execution> </executions> </plugin> -->
+		</plugins>
+	</build>
+
+<!--   <build> -->
+<!--     <finalName>KunderaJSRest</finalName> -->
+<!--   </build> -->
+</project>
