@@ -4,7 +4,7 @@
 	<groupId>com.impetus.kundera.webtest</groupId>
 	<artifactId>KunderaJSRest</artifactId>
 	<packaging>war</packaging>
-	<version>2.14-SNAPSHOT</version>
+	<version>2.13.1</version>
 	<name>KunderaJSRest Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
